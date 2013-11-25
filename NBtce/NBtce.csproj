@@ -42,10 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiParameterAttribute.cs" />
     <Compile Include="ApiPermissions.cs" />
+    <Compile Include="ApiRequestAttribute.cs" />
     <Compile Include="ApiResponse.cs" />
+    <Compile Include="DictionaryObjectConverter.cs" />
     <Compile Include="Funds.cs" />
+    <Compile Include="IApiParameterConverter.cs" />
+    <Compile Include="MissingRequestParameterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortOrder.cs" />
+    <Compile Include="SortOrderParameterConverter.cs" />
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionHistory.cs" />
+    <Compile Include="TransactionHistoryConverter.cs" />
+    <Compile Include="TransactionHistoryRequest.cs" />
+    <Compile Include="UnixTimeParameterConverter.cs" />
     <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>

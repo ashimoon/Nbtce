@@ -15,7 +15,7 @@ namespace Nbtce.Test
         [Test]
         public void deserialize_sample_user_info()
         {
-            string sample_data = @"{
+            string sampleData = @"{
 	            'success':1,
 		            'return':{
 		            'funds':{
@@ -36,7 +36,7 @@ namespace Nbtce.Test
 	            }
             }";
 
-            var deserialized = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(sample_data);
+            var deserialized = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(sampleData);
 
             Assert.That(deserialized.Success, Is.True);
             Assert.That(deserialized.ErrorText, Is.Null);
