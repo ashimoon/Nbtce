@@ -1,7 +1,7 @@
 ﻿namespace NBtce.Mappers
 {
-    public interface IApiParameterMapper<in TParameter>
+    public interface IApiParameterMapper
     {
-        string ToString(TParameter parameter);
+        string MapToString(object parameter);
     }
 }

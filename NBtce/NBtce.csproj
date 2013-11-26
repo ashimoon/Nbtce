@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRequest.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
     <Compile Include="ApiPermissions.cs" />
     <Compile Include="Attributes\ApiRequestAttribute.cs" />
