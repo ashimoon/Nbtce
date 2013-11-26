@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace NBtce.Model
 {
     [JsonObject(MemberSerialization.OptIn)]
-    [JsonConverter(typeof(DictionaryObjectConverter<TransactionHistory,int,Transaction>))]
+    [JsonConverter(typeof(DictionaryObjectConverter<int,Transaction>))]
     public class TransactionHistory : Dictionary<int, Transaction>
     {
     }

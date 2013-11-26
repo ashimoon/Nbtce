@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace NBtce.Model
 {
     [JsonObject]
-    [JsonConverter(typeof(DictionaryObjectConverter<TradeHistory,int,Trade>))]
+    [JsonConverter(typeof(DictionaryObjectConverter<int,Trade>))]
     public class TradeHistory : Dictionary<int,Trade>
     {
         
