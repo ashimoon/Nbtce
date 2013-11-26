@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using NBtce.Converters;
 using Newtonsoft.Json;
 
-namespace NBtce
+namespace NBtce.Model
 {
     [JsonObject(MemberSerialization.OptIn)]
+    [JsonConverter(typeof(DictionaryObjectConverter<TransactionHistory,int,Transaction>))]
     public class TransactionHistory : Dictionary<int, Transaction>
     {
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace NBtce
+namespace NBtce.Converters
 {
     public class DictionaryObjectConverter<TObject, TKey, TValue> : JsonConverter where TObject : IDictionary<TKey, TValue>, new()
     {

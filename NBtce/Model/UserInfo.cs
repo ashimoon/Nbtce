@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace NBtce
+namespace NBtce.Model
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class UserInfo

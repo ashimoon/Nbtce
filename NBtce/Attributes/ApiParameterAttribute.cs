@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NBtce
+namespace NBtce.Attributes
 {
     public class ApiParameterAttribute : Attribute
     {
@@ -8,7 +8,7 @@ namespace NBtce
 
         public string Name { get; set; }
 
-        public Type ParameterConverter { get; set; }
+        public Type ParameterMapper { get; set; }
 
         public ApiParameterAttribute(string name)
         {

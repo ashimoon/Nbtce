@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NBtce;
+using NBtce.Model;
 using NUnit.Framework;
 using Newtonsoft.Json;
 

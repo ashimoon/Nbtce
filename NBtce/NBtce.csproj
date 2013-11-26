@@ -35,6 +35,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,23 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiParameterAttribute.cs" />
+    <Compile Include="Attributes\ApiParameterAttribute.cs" />
     <Compile Include="ApiPermissions.cs" />
-    <Compile Include="ApiRequestAttribute.cs" />
+    <Compile Include="Attributes\ApiRequestAttribute.cs" />
     <Compile Include="ApiResponse.cs" />
-    <Compile Include="DictionaryObjectConverter.cs" />
-    <Compile Include="Funds.cs" />
-    <Compile Include="IApiParameterConverter.cs" />
+    <Compile Include="Converters\DictionaryObjectConverter.cs" />
+    <Compile Include="Converters\EnumToStringMapping.cs" />
+    <Compile Include="Converters\EnumValueConverter.cs" />
+    <Compile Include="Model\Funds.cs" />
+    <Compile Include="Attributes\JsonEnumAttribute.cs" />
+    <Compile Include="Attributes\JsonEnumValueAttribute.cs" />
+    <Compile Include="Mappers\IApiParameterMapper.cs" />
     <Compile Include="MissingRequestParameterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SortOrder.cs" />
-    <Compile Include="SortOrderParameterConverter.cs" />
-    <Compile Include="Transaction.cs" />
-    <Compile Include="TransactionHistory.cs" />
-    <Compile Include="TransactionHistoryConverter.cs" />
+    <Compile Include="Model\SortOrder.cs" />
+    <Compile Include="Model\Trade.cs" />
+    <Compile Include="Model\TradeHistory.cs" />
+    <Compile Include="Converters\StringToEnumMapping.cs" />
+    <Compile Include="TradeHistoryRequest.cs" />
+    <Compile Include="Model\TradingPair.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\TransactionHistory.cs" />
     <Compile Include="TransactionHistoryRequest.cs" />
-    <Compile Include="UnixTimeParameterConverter.cs" />
-    <Compile Include="UserInfo.cs" />
+    <Compile Include="Mappers\UnixTimeMapper.cs" />
+    <Compile Include="Model\UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

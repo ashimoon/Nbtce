@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NBtce;
+using NBtce.Model;
 using NUnit.Framework;
 using Newtonsoft.Json;
 
@@ -15,7 +16,7 @@ namespace Nbtce.Test
         [Test]
         public void deserialize_sample_trans_history()
         {
-            string sampleData = @"{
+            const string sampleData = @"{
 	            'success':1,
 	            'return':{
 		            '1081672':{
@@ -29,7 +30,7 @@ namespace Nbtce.Test
 	            }
             }";
 
-            var response = JsonConvert.DeserializeObject<ApiResponse<TransactionHistory>>(sampleData, new TransactionHistoryConverter());
+            var response = JsonConvert.DeserializeObject<ApiResponse<TransactionHistory>>(sampleData);
 
             Assert.That(response, Is.Not.Null);
             Assert.That(response.Success, Is.True);

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NBtce
+namespace NBtce.Attributes
 {
     public class ApiRequestAttribute : Attribute
     {
