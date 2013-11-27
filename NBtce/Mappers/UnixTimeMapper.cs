@@ -9,7 +9,7 @@ namespace NBtce.Mappers
 
         public string MapToString(object parameter)
         {
-            return ((long) (((DateTime)parameter).ToUniversalTime() - UnixEpoch).TotalSeconds).ToString(CultureInfo.InvariantCulture);
+            return UnixTime.At((DateTime)parameter).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

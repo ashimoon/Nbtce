@@ -46,6 +46,8 @@
     <Compile Include="ApiMethod.cs" />
     <Compile Include="ApiMethodParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
+    <Compile Include="NonceProvider.cs" />
+    <Compile Include="UnixTime.cs" />
     <Compile Include="Model\ApiPermissions.cs" />
     <Compile Include="Attributes\ApiRequestAttribute.cs" />
     <Compile Include="ApiResponse.cs" />

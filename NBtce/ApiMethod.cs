@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Globalization;
+using System.IO;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,8 +14,12 @@ namespace NBtce
        
         public ApiResponse<TResponse> Submit(string apiKey, string secret)
         {
-            var parameters = new ApiMethodParameters(this);
-            var encoding = new ASCIIEncoding();
+            var parameters = new ApiMethodParameters(this)
+                {
+                  {"nonce", NonceProvider.GetNext().ToString(CultureInfo.InvariantCulture)}
+                };
+
+            var encoding = new UTF8Encoding();
             var content = encoding.GetBytes(parameters.BuildPostContent());
 
             var post = WebRequest.CreateHttp(ApiRequestUri);
@@ -21,7 +27,8 @@ namespace NBtce
             post.Headers["Key"] = apiKey;
             using (var hmac = new HMACSHA512(encoding.GetBytes(secret)))
             {
-                post.Headers["Sign"] = encoding.GetString(hmac.ComputeHash(content));
+                var signature = BitConverter.ToString(hmac.ComputeHash(content)).Replace("-", string.Empty).ToLower();
+                post.Headers["Sign"] = signature;
             }
             post.ContentType = "application/x-www-form-urlencoded";
             post.ContentLength = content.Length;
@@ -30,7 +37,6 @@ namespace NBtce
             {
                 stream.Write(content, 0, content.Length);
             }
-
             var responseStream = post.GetResponse().GetResponseStream();
             if (responseStream == null) return null;
             string returnEntity = new StreamReader(responseStream).ReadToEnd();
