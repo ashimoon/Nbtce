@@ -9,21 +9,21 @@ namespace NBtce.Requests
     public class TransactionHistoryRequest : ApiMethod<TransactionHistory>
     {
         [ApiParameter("from_id")]
-        public int FromId { get; set; }
+        public int? FromId { get; set; }
 
         [ApiParameter("end_id")]
-        public int EndId { get; set; }
+        public int? EndId { get; set; }
 
         [ApiParameter("count")]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
-        [ApiParameter("order")]
-        public SortOrder SortOrder { get; set; }
+        [ApiParameter("order", ParameterMapper = typeof(EnumMapper<SortOrder>))]
+        public SortOrder? SortOrder { get; set; }
 
         [ApiParameter("since", ParameterMapper = typeof(UnixTimeMapper))]
-        public DateTime Since { get; set; }
+        public DateTime? Since { get; set; }
 
         [ApiParameter("end", ParameterMapper = typeof(UnixTimeMapper))]
-        public DateTime Until { get; set; }
+        public DateTime? Until { get; set; }
     }
 }

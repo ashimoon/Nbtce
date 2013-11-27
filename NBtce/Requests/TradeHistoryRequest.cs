@@ -14,7 +14,7 @@ namespace NBtce.Requests
         [ApiParameter("end_id")]
         public int? EndId { get; set; }
 
-        [ApiParameter("order")]
+        [ApiParameter("order", ParameterMapper = typeof(EnumMapper<SortOrder>))]
         public SortOrder? SortOrder { get; set; }
 
         [ApiParameter("count")]
@@ -26,7 +26,7 @@ namespace NBtce.Requests
         [ApiParameter("end", ParameterMapper = typeof(UnixTimeMapper))]
         public DateTime? Until { get; set; }
 
-        [ApiParameter("pair")]
+        [ApiParameter("pair", ParameterMapper = typeof(EnumMapper<TradingPair>))]
         public TradingPair? TradingPair { get; set; }
     }
 }

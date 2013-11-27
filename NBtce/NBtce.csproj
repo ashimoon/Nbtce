@@ -46,6 +46,7 @@
     <Compile Include="ApiMethod.cs" />
     <Compile Include="ApiMethodParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
+    <Compile Include="Mappers\EnumMapper.cs" />
     <Compile Include="NonceProvider.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Model\ApiPermissions.cs" />
