@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiRequestTests.cs" />
+    <Compile Include="ApiMethodParametersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TradeHistorySerializationTests.cs" />
     <Compile Include="TransactionHistorySerializationTests.cs" />

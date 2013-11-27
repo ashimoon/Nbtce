@@ -3,10 +3,10 @@ using NBtce.Attributes;
 using NBtce.Mappers;
 using NBtce.Model;
 
-namespace NBtce
+namespace NBtce.Requests
 {
-    [ApiRequest]
-    public class TransactionHistoryRequest
+    [ApiRequest("TransHistory")]
+    public class TransactionHistoryRequest : ApiMethod<TransactionHistory>
     {
         [ApiParameter("from_id")]
         public int FromId { get; set; }

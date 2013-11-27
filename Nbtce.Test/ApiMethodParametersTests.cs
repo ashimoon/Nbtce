@@ -11,10 +11,10 @@ using NUnit.Framework;
 namespace Nbtce.Test
 {
     [TestFixture]
-    public class ApiRequestTests
+    public class ApiMethodParametersTests
     {
-        [ApiRequest]
-        class FakeApiRequest
+        [ApiRequest("fake")]
+        class FakeApiMethod : ApiMethod<FakeResponse>
         {
             public const string SomeParameterProperty = "some_parameter";
             public const string SomeNullableIntProperty = "some_nullable_int";
@@ -30,6 +30,10 @@ namespace Nbtce.Test
             public DateTime? SomeDateTime { get; set; }
         }
 
+        private class FakeResponse
+        {
+        }
+
         class FakeParameterMapper : IApiParameterMapper
         {
             public const string AlwaysReturn = "fake";
@@ -43,13 +47,14 @@ namespace Nbtce.Test
         public void nothing_set()
         {
             // Arrange
-            var request = new FakeApiRequest();
+            var request = new FakeApiMethod();
 
             // Act
-            var apiRequest = new ApiRequest<FakeApiRequest>(request);
+            var apiRequest = new ApiMethodParameters(request);
 
             // Assert
-            Assert.That(apiRequest.Count, Is.EqualTo(0));
+            Assert.That(apiRequest.Count, Is.EqualTo(1));
+            Assert.That(apiRequest["method"], Is.EqualTo("fake"));
         }
 
         [Test]
@@ -58,19 +63,20 @@ namespace Nbtce.Test
             // Arrange
             const string someStringValue = "some-string-value";
             const int someNullableInt = 5;
-            var request = new FakeApiRequest
+            var request = new FakeApiMethod
                 {
                     SomeParameter = someStringValue, 
                     SomeNullableInt = someNullableInt
                 };
 
             // Act
-            var apiRequest = new ApiRequest<FakeApiRequest>(request);
+            var apiRequest = new ApiMethodParameters(request);
 
             // Assert
-            Assert.That(apiRequest.Count, Is.EqualTo(2));
-            Assert.That(apiRequest[FakeApiRequest.SomeParameterProperty] == someStringValue);
-            Assert.That(apiRequest[FakeApiRequest.SomeNullableIntProperty] == someNullableInt.ToString());
+            Assert.That(apiRequest.Count, Is.EqualTo(3));
+            Assert.That(apiRequest["method"], Is.EqualTo("fake"));
+            Assert.That(apiRequest[FakeApiMethod.SomeParameterProperty] == someStringValue);
+            Assert.That(apiRequest[FakeApiMethod.SomeNullableIntProperty] == someNullableInt.ToString());
         }
 
         [Test]
@@ -78,34 +84,36 @@ namespace Nbtce.Test
         {
             // Arrange
             const string someStringValue = "some-string-value";
-            var request = new FakeApiRequest
+            var request = new FakeApiMethod
                 {
                     SomeParameter = someStringValue
                 };
 
             // Act
-            var apiRequest = new ApiRequest<FakeApiRequest>(request);
+            var apiRequest = new ApiMethodParameters(request);
 
             // Assert
-            Assert.That(apiRequest.Count, Is.EqualTo(1));
-            Assert.That(apiRequest[FakeApiRequest.SomeParameterProperty] == someStringValue);
+            Assert.That(apiRequest.Count, Is.EqualTo(2));
+            Assert.That(apiRequest["method"], Is.EqualTo("fake"));
+            Assert.That(apiRequest[FakeApiMethod.SomeParameterProperty] == someStringValue);
         }
 
         [Test]
         public void nullable_datetime_set_uses_parameter_mapper()
         {
             // Arrange
-            var request = new FakeApiRequest
+            var request = new FakeApiMethod
             {
                 SomeDateTime = new DateTime(2013, 11, 25)
             };
 
             // Act
-            var apiRequest = new ApiRequest<FakeApiRequest>(request);
+            var apiRequest = new ApiMethodParameters(request);
 
             // Assert
-            Assert.That(apiRequest.Count, Is.EqualTo(1));
-            Assert.That(apiRequest[FakeApiRequest.SomeNullableDateTimeProperty] == FakeParameterMapper.AlwaysReturn);
+            Assert.That(apiRequest.Count, Is.EqualTo(2));
+            Assert.That(apiRequest["method"], Is.EqualTo("fake"));
+            Assert.That(apiRequest[FakeApiMethod.SomeNullableDateTimeProperty] == FakeParameterMapper.AlwaysReturn);
         }
     }
 }

@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using NBtce.Attributes;
 using NBtce.Mappers;
 
 namespace NBtce
 {
-    public class ApiRequest<TRequest> : Dictionary<string,string>
+    public class ApiMethodParameters : Dictionary<string,string>
     {
-        public ApiRequest(TRequest request)
+        public ApiMethodParameters(object request)
         {
-            foreach (var property in typeof (TRequest).GetProperties(BindingFlags.Public | BindingFlags.Instance))
+            var requestAttribute = request.GetType().GetCustomAttribute<ApiRequestAttribute>();
+            if (requestAttribute == null)
+            {
+                throw new MissingRequestParameterException("method");
+            }
+
+            Add("method", requestAttribute.MethodName);
+
+            foreach (var property in request.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
                 var attribute = property.GetCustomAttribute<ApiParameterAttribute>();
                 if (attribute == null) continue;
@@ -28,6 +37,11 @@ namespace NBtce
                     Add(attribute.Name, parameterValue.ToString());
                 }
             }
+        }
+
+        public string BuildPostContent()
+        {
+            return Count == 0 ? null : string.Join("&", this.Select(x => string.Format("{0}={1}", x.Key, x.Value)));
         }
     }
 }

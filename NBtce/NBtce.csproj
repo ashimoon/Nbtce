@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiRequest.cs" />
+    <Compile Include="ApiMethod.cs" />
+    <Compile Include="ApiMethodParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
-    <Compile Include="ApiPermissions.cs" />
+    <Compile Include="Model\ApiPermissions.cs" />
     <Compile Include="Attributes\ApiRequestAttribute.cs" />
     <Compile Include="ApiResponse.cs" />
     <Compile Include="Converters\DictionaryObjectConverter.cs" />
@@ -61,11 +62,12 @@
     <Compile Include="Model\Trade.cs" />
     <Compile Include="Model\TradeHistory.cs" />
     <Compile Include="Converters\StringToEnumMapping.cs" />
-    <Compile Include="TradeHistoryRequest.cs" />
+    <Compile Include="Requests\GetInfoRequest.cs" />
+    <Compile Include="Requests\TradeHistoryRequest.cs" />
     <Compile Include="Model\TradingPair.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\TransactionHistory.cs" />
-    <Compile Include="TransactionHistoryRequest.cs" />
+    <Compile Include="Requests\TransactionHistoryRequest.cs" />
     <Compile Include="Mappers\UnixTimeMapper.cs" />
     <Compile Include="Model\UserInfo.cs" />
   </ItemGroup>

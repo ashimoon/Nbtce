@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Linq;
 using NBtce.Attributes;
 using NBtce.Mappers;
 using NBtce.Model;
 
-namespace NBtce
+namespace NBtce.Requests
 {
-    [ApiRequest]
-    public class TradeHistoryRequest
+    [ApiRequest("TradeHistory")]
+    public class TradeHistoryRequest : ApiMethod<TradeHistory>
     {
         [ApiParameter("from_id")]
         public int? FromId { get; set; }

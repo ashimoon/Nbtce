@@ -45,9 +45,9 @@ namespace Nbtce.Test
 
             var funds = deserialized.Return.Funds;
             Assert.That(funds, Is.Not.Null);
-            Assert.That(funds.USD, Is.EqualTo(325m));
-            Assert.That(funds.BTC, Is.EqualTo(23.998m));
-            Assert.That(funds.LTC, Is.EqualTo(0m));
+            Assert.That(funds.Usd, Is.EqualTo(325m));
+            Assert.That(funds.Btc, Is.EqualTo(23.998m));
+            Assert.That(funds.Ltc, Is.EqualTo(0m));
 
             var permissions = deserialized.Return.Permissions;
             Assert.That(permissions, Is.Not.Null);
