@@ -5,7 +5,7 @@ using NBtce.Model;
 namespace NBtce.Requests
 {
     [ApiRequest("Trade")]
-    public class TradeRequest : ApiMethod<TradeReceipt>
+    public class TradeRequest : ApiRequest<TradeReceipt>
     {
         private readonly TradingPair _tradingPair;
         private readonly TradeType _tradeType;

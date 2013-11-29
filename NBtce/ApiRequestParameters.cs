@@ -9,7 +9,7 @@ using NBtce.Mappers;
 
 namespace NBtce
 {
-    public class ApiMethodParameters : List<KeyValuePair<string,string>>
+    public class ApiRequestParameters : List<KeyValuePair<string,string>>
     {
         public string this[string key]
         {
@@ -17,7 +17,7 @@ namespace NBtce
             set { Add(key, value); }
         }
 
-        public ApiMethodParameters(object request, INonceProvider nonceProvider)
+        public ApiRequestParameters(object request, INonceProvider nonceProvider)
         {
             var requestAttribute = request.GetType().GetCustomAttribute<ApiRequestAttribute>();
             if (requestAttribute == null)

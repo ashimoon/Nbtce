@@ -4,7 +4,7 @@ using NBtce.Model;
 namespace NBtce.Requests
 {
     [ApiRequest("CancelOrder")]
-    public class CancelOrderRequest : ApiMethod<CancelResponse>
+    public class CancelOrderRequest : ApiRequest<CancelResponse>
     {
         private readonly long _orderId;
         

@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 
 namespace NBtce
 {
-    public abstract class ApiMethod<TResponse>
+    public abstract class ApiRequest<TResponse>
     {
         private const string ApiRequestUri = "https://btc-e.com/tapi";
        
         public ApiResponse<TResponse> Submit(string apiKey, string secret, INonceProvider nonceProvider)
         {
-            var parameters = new ApiMethodParameters(this, nonceProvider);
+            var parameters = new ApiRequestParameters(this, nonceProvider);
 
             var encoding = new UTF8Encoding();
             var content = encoding.GetBytes(parameters.BuildPostContent());

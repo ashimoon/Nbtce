@@ -6,7 +6,7 @@ using NBtce.Model;
 namespace NBtce.Requests
 {
     [ApiRequest("TradeHistory")]
-    public class TradeHistoryRequest : ApiMethod<TradeHistory>
+    public class TradeHistoryRequest : ApiRequest<TradeHistory>
     {
         [ApiParameter("from_id")]
         public int? FromId { get; set; }

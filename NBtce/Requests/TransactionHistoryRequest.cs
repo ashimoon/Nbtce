@@ -6,7 +6,7 @@ using NBtce.Model;
 namespace NBtce.Requests
 {
     [ApiRequest("TransHistory")]
-    public class TransactionHistoryRequest : ApiMethod<TransactionHistory>
+    public class TransactionHistoryRequest : ApiRequest<TransactionHistory>
     {
         [ApiParameter("from_id")]
         public int? FromId { get; set; }

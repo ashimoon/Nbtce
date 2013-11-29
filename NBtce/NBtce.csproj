@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiMethod.cs" />
-    <Compile Include="ApiMethodParameters.cs" />
+    <Compile Include="ApiRequest.cs" />
+    <Compile Include="ApiRequestParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
+    <Compile Include="BtcePortal.cs" />
+    <Compile Include="BtcePortalException.cs" />
     <Compile Include="Converters\MissingJsonEnumValueAttributeException.cs" />
     <Compile Include="INonceProvider.cs" />
     <Compile Include="Mappers\EnumMapper.cs" />
