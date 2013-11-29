@@ -5,7 +5,7 @@ using NBtce.Model;
 namespace NBtce.Requests
 {
     [ApiRequest("Trade")]
-    public class TradeRequest
+    public class TradeRequest : ApiMethod<TradeReceipt>
     {
         [ApiParameter("pair", ParameterMapper = typeof(EnumMapper<TradingPair>), Required = true)]
         public TradingPair? TradingPair { get; set; }
