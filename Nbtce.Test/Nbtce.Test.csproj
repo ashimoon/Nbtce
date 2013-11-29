@@ -45,12 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivesOrdersSerializationTests.cs" />
     <Compile Include="ApiMethodParametersTests.cs" />
+    <Compile Include="CancelResponseSerializationTests.cs" />
     <Compile Include="Converters\EnumToStringMappingTests.cs" />
     <Compile Include="Converters\StringToEnumMappingTests.cs" />
     <Compile Include="Private\GetUserInfoIntegrationTest.cs" />
+    <Compile Include="Private\TradeHistoryIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TradeHistorySerializationTests.cs" />
+    <Compile Include="TradeReceiptSerializationTests.cs" />
     <Compile Include="TransactionHistorySerializationTests.cs" />
     <Compile Include="UserInfoSerializationTests.cs" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using NBtce.Converters;
+using Newtonsoft.Json;
 
 namespace NBtce.Model
 {

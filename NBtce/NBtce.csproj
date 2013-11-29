@@ -47,9 +47,16 @@
     <Compile Include="ApiMethodParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
     <Compile Include="Converters\MissingJsonEnumValueAttributeException.cs" />
-    <Compile Include="DataStructures.cs" />
     <Compile Include="Mappers\EnumMapper.cs" />
+    <Compile Include="Model\ActiveOrders.cs" />
+    <Compile Include="Model\CancelResponse.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\TradeReceipt.cs" />
     <Compile Include="NonceProvider.cs" />
+    <Compile Include="Requests\ActiveOrdersRequest.cs" />
+    <Compile Include="Requests\CancelOrderRequest.cs" />
+    <Compile Include="Requests\TradeRequest.cs" />
+    <Compile Include="Model\TradeType.cs" />
     <Compile Include="UnixTime.cs" />
     <Compile Include="Model\ApiPermissions.cs" />
     <Compile Include="Attributes\ApiRequestAttribute.cs" />
@@ -64,7 +71,7 @@
     <Compile Include="MissingRequestParameterException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\SortOrder.cs" />
-    <Compile Include="Model\Trade.cs" />
+    <Compile Include="Model\ExecutedTrade.cs" />
     <Compile Include="Model\TradeHistory.cs" />
     <Compile Include="Converters\StringToEnumMapping.cs" />
     <Compile Include="Requests\GetInfoRequest.cs" />

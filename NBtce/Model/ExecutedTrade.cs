@@ -5,14 +5,15 @@ using Newtonsoft.Json;
 namespace NBtce.Model
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public class Trade
+    public class ExecutedTrade
     {
         [JsonProperty("pair")]
         [JsonConverter(typeof(EnumValueConverter<TradingPair>))]
         public TradingPair TradingPair { get; set; }
 
         [JsonProperty("type")]
-        public String Type { get; set; }
+        [JsonConverter(typeof(EnumValueConverter<TradeType>))]
+        public TradeType Type { get; set; }
 
         [JsonProperty("amount")]
         public decimal Amount { get; set; }
