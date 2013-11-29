@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using NBtce.Attributes;
 
 namespace NBtce.Converters
@@ -11,12 +12,13 @@ namespace NBtce.Converters
         {
             foreach (var enumValue in Enum.GetValues(typeof(TEnum)).Cast<TEnum>())
             {
-                var attribute =
-                    typeof(TEnum).GetMember(enumValue.ToString())
-                                 .Single()
-                                 .GetCustomAttributes(typeof(JsonEnumValueAttribute), false)
-                                 .Cast<JsonEnumValueAttribute>()
-                                 .Single();
+                var attribute = typeof(TEnum).GetMember(enumValue.ToString())
+                                             .Single()
+                                             .GetCustomAttribute<JsonEnumValueAttribute>();
+                if (attribute == null)
+                {
+                    throw new MissingJsonEnumValueAttributeException(typeof(TEnum), enumValue.ToString());
+                }
                 Add(attribute.Name, enumValue);
             }
         }

@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiMethodParametersTests.cs" />
+    <Compile Include="Converters\EnumToStringMappingTests.cs" />
+    <Compile Include="Converters\StringToEnumMappingTests.cs" />
     <Compile Include="Private\GetUserInfoIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TradeHistorySerializationTests.cs" />
