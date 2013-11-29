@@ -47,6 +47,7 @@
     <Compile Include="ApiMethodParameters.cs" />
     <Compile Include="Attributes\ApiParameterAttribute.cs" />
     <Compile Include="Converters\MissingJsonEnumValueAttributeException.cs" />
+    <Compile Include="INonceProvider.cs" />
     <Compile Include="Mappers\EnumMapper.cs" />
     <Compile Include="Model\ActiveOrders.cs" />
     <Compile Include="Model\CancelResponse.cs" />

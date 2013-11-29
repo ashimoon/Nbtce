@@ -12,12 +12,9 @@ namespace NBtce
     {
         private const string ApiRequestUri = "https://btc-e.com/tapi";
        
-        public ApiResponse<TResponse> Submit(string apiKey, string secret)
+        public ApiResponse<TResponse> Submit(string apiKey, string secret, INonceProvider nonceProvider)
         {
-            var parameters = new ApiMethodParameters(this)
-                {
-                  {"nonce", NonceProvider.GetNext().ToString(CultureInfo.InvariantCulture)}
-                };
+            var parameters = new ApiMethodParameters(this, nonceProvider);
 
             var encoding = new UTF8Encoding();
             var content = encoding.GetBytes(parameters.BuildPostContent());

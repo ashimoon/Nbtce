@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NBtce
 {
-    public class NonceProvider
+    public class NonceProvider : INonceProvider
     {
-        private static long _seed = UnixTime.Now;
+        private long _seed = UnixTime.Now;
 
-        public static long GetNext()
+        public long GetNext()
         {
             return _seed++;
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using NBtce.Attributes;
@@ -7,9 +9,15 @@ using NBtce.Mappers;
 
 namespace NBtce
 {
-    public class ApiMethodParameters : Dictionary<string,string>
+    public class ApiMethodParameters : List<KeyValuePair<string,string>>
     {
-        public ApiMethodParameters(object request)
+        public string this[string key]
+        {
+            get { return this.Single(x => x.Key == key).Value; }
+            set { Add(key, value); }
+        }
+
+        public ApiMethodParameters(object request, INonceProvider nonceProvider)
         {
             var requestAttribute = request.GetType().GetCustomAttribute<ApiRequestAttribute>();
             if (requestAttribute == null)
@@ -18,6 +26,7 @@ namespace NBtce
             }
 
             Add("method", requestAttribute.MethodName);
+            Add("nonce", nonceProvider.GetNext().ToString(CultureInfo.InvariantCulture));
 
             foreach (var property in request.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
             {
@@ -37,6 +46,15 @@ namespace NBtce
                     Add(attribute.Name, parameterValue.ToString());
                 }
             }
+        }
+
+        private void Add(string key, string value)
+        {
+            if (this.Any(x => x.Key == key))
+            {
+                throw new DuplicateNameException("There is already a parameter with the name " + key);
+            }
+            Add(new KeyValuePair<string, string>(key, value));
         }
 
         public string BuildPostContent()
