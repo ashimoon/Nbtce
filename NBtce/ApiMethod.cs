@@ -39,7 +39,5 @@ namespace NBtce
             string returnEntity = new StreamReader(responseStream).ReadToEnd();
             return JsonConvert.DeserializeObject<ApiResponse<TResponse>>(returnEntity);
         }
-       
-
     }
 }
